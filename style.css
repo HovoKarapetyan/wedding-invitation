@@ -1,0 +1,739 @@
+body {
+    font-family: 'Playfair Display', serif; /* Օգտագործում ենք նրբագեղ տառատեսակ */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f0f0f0; /* Պահպանենք հիմնական ֆոնը թեթև */
+    color: #333; /* Հիմնական տեքստի գույնը */
+    line-height: 1.6;
+    overflow-x: hidden; /* Կանխել հորիզոնական սքրոլը */
+
+    /* Նոր ֆոնային պատկեր */
+    background-image: url('images/background.jpg'); /* */
+    background-size: contain; /* Ծածկել ամբողջ էկրանը */
+    /* background-repeat: no-repeat; */
+    background-attachment: fixed; /* Ֆոնը մնա անշարժ սքրոլ անելիս */
+    background-position: center center;
+    /* #d9af7f -> text, #f6dbde -> himnakan */
+}
+
+/* Ընդհանուր կոնտեյներ, որը կտեղադրվի ֆոնի վրա */
+.container {
+    max-width: 900px; /* Կայքի ընդհանուր լայնությունը */
+    margin: 0 auto;
+    padding: 0px; /* Հեռացրել եմ padding-ը, որպեսզի բաժինները ծածկեն լայնությունը */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    background-color: rgba(255, 255, 255, 0.5); /* Թեթև թափանցիկ սպիտակ ֆոն կոնտեյների համար */
+    min-height: 100vh; /* Համոզվել, որ կոնտեյները նվազագույնը լինի էկրանի բարձրությամբ */
+}
+
+/* Բաժինների ոճավորում */
+section {
+    padding: 60px 20px; /* Վերևի/ներքևի և կողքի ներքին բացեր */
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4); /* Բաժինների համար ավելի թեթև, բայց տեսանելի ֆոն */
+    margin-bottom: 20px; /* Բաց թողնել բաժինների միջև */
+    border-radius: 8px; /* Կլորացված անկյուններ բաժինների համար */
+    border-left: 2px solid #d9af7f;
+    border-right: 2px solid #d9af7f;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Թեթև ստվեր */
+}
+
+/* Հերոս բաժին (առաջին էկրան) */
+#hero {
+    padding: 80px 20px;
+    background-color: rgba(255, 255, 255, 0.4); /* Ավելի թափանցիկ ֆոն հերոս բաժնի համար */
+    min-height: 600px; /* Հերոս բաժնի նվազագույն բարձրություն */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    /* border-left: 2px solid #d9af7f;
+    border-right: 2px solid #d9af7f; */
+}
+
+.hero-content {
+    max-width: 700px;
+    z-index: 1; /* Համոզվել, որ բովանդակությունը վերևում է */
+}
+
+.hero-image {
+    width: 100%; /* Լայնությունը 100% */
+    max-width: 500px; /* Առավելագույն լայնություն */
+    height: auto;
+    border-radius: 10px; /* Փոքր կլորացված անկյուններ */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+}
+
+.mini-images {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+.mini-images img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.mini-images img:hover {
+    transform: scale(1.1);
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5em;
+    color: #d9af7f; /* Մուգ կանաչ տառերի համար */
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    color: #d9af7f; /* Միջին կանաչ տառերի համար */
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    color: #d9af7f; /* Նույն մուգ կանաչը */
+    margin-bottom: 15px;
+}
+
+h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2em;
+    color: #555; /* Ընդհանուր տեքստի գույնը */
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+p {
+    color: #555;
+    font-family: Arial, sans-serif; /* Պարզ տառատեսակ ընդհանուր տեքստի համար */
+    font-size: 1em;
+}
+#about_me {
+    background-color: rgba(255, 255, 255, 0.65);
+}
+
+
+/* Կոճակների ոճավորում */
+.button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #d9af7f; 
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    border: none;
+}
+
+.button:hover {
+    background-color: #96682f; /* Մի փոքր ավելի մուգ կանաչ hover-ի ժամանակ */
+    transform: translateY(-2px);
+}
+
+/* Օրացույցի ոճավորում */
+.calendar {
+    margin: 40px auto;
+    padding: 30px; 
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 100%; 
+    box-sizing: border-box;
+}
+
+.calendar h3 {
+    font-size: 2em;
+    color: #d9af7f;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.calendar .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px; 
+    margin-top: 15px;
+    font-size: 1em; 
+    }
+
+.calendar .days span {
+    padding: 12px 5px; 
+    border-radius: 8px; 
+    background-color: #F5E9DC; 
+    white-space: nowrap;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 40px; 
+    min-height: 40px; 
+    box-sizing: border-box;
+    color: #555;
+    font-size: 19px;
+    font-weight: normal;
+    transition: background-color 0.3s ease;
+}
+
+.calendar .days span:nth-child(-n+7) {
+    font-weight: bold;
+    /* background: linear-gradient(0.25turn, #f0e3d6, #e6bfa3, #d19a89, #b87a6b, #8d5b4e    ); */
+    /* background: radial-gradient(circle, #f0e3d6, #e6bfa3, #d19a89, #b87a6b, #8d5b4e); */
+    background-color: #d9af7fba;
+    color: #555; 
+}
+
+.calendar .days .highlight-date {
+    background-color: rgba(255, 255, 255, 0.01); 
+    color: #555; 
+    font-weight: bold;
+    position: relative;
+    /* overflow: hidden; */
+    z-index: 1;
+    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.8);
+
+    /* background-image: url("images/heart_icon.png"); 
+    background-size: 60% 100%; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+    animation: heartBeatImage 1s infinite alternate; */
+}
+
+.calendar .days .highlight-date::before {
+    content: ''; 
+    position: absolute;
+    /* top: -1;
+    left: -6; */
+    width: 155%;
+    height: 190%;
+    z-index: -1; 
+
+    background-image: url("images/heart_icon.png"); 
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+    animation: heartBeatImage 1s infinite alternate;
+}
+
+/* Անիմացիան նկարի համար */
+@keyframes heartBeatImage {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); } /* Մի փոքր ավելի մեծացնել */
+    100% { transform: scale(1); }
+}
+
+/* Countdown Section Styling (Նորացված տեսք) */
+.countdown {
+    text-align: center;
+    margin: 40px auto;
+    padding: 40px; 
+    background-color: rgba(255, 255, 255, 0.65); 
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 750px; 
+    box-sizing: border-box;
+    /* background: #D9AF7F;
+    background: linear-gradient(270deg, rgba(217, 175, 127, 0.86) 0%, rgba(245, 233, 220, 1) 50%, rgba(241, 197, 208, 1) 100%); */
+}
+
+.countdown h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em; /* Ավելի մեծ տառաչափ */
+    color: #d9af7f;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+}
+
+.timer-display {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Կենտրոնացնել վերևից ներքև */
+    gap: 30px; /* Ավելի շատ բաց տարրերի միջև */
+    font-size: 2rem;
+    flex-wrap: wrap;
+    /* background: #D9AF7F;
+    background: linear-gradient(270deg, rgba(217, 175, 127, 0.86) 0%, rgba(245, 233, 220, 1) 50%, rgba(241, 197, 208, 1) 100%); */
+}
+
+.timer-display .time-group { /* Նոր դաս յուրաքանչյուր թիվ-տեքստ զույգի համար */
+    display: flex;
+    flex-direction: column; /* Թիվը վերևում, տեքստը ներքևում */
+    align-items: center;
+}
+
+.timer-display .time-group span:first-child { /* Թվերի համար */
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5em; /* Ավելի մեծ տառաչափ թվերի համար */
+    font-weight: bold;
+    color: #a7c9a4;
+    background-color: #ffffff;
+    padding: 20px 25px; /* Ավելի շատ padding */
+    border-radius: 12px; /* Ավելի կլորացված անկյուններ */
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    min-width: 90px; /* Նվազագույն լայնություն */
+    line-height: 1;
+    margin-bottom: 10px; /* Բաց թողնել տեքստից առաջ */
+}
+
+.timer-display .time-group span:last-child { /* Տեքստերի համար (օր, ժամ, րոպե, վրկ) */
+    font-size: 1.2em; /* Մի փոքր մեծացնել տեքստի չափը */
+    color: #d9af7f; /* Միջին կանաչ գույն */
+    font-weight: normal;
+    text-transform: uppercase; /* Մեծատառ դարձնել */
+    letter-spacing: 0.5px;
+}
+
+
+.timer-container {
+  display: flex;
+  justify-content: space-around;
+  /* gap: 20px; */
+  /* background-color: #1e1e1e; */
+  /* background: #D9AF7F;
+  background: linear-gradient(270deg, rgba(217, 175, 127, 0.86) 0%, rgba(245, 233, 220, 1) 50%, rgba(241, 197, 208, 1) 100%); */
+  /* background: #D9AF7F;
+background: radial-gradient(circle, rgba(217, 175, 127, 0.86) 0%, rgba(245, 233, 220, 1) 50%, #f1c5d0 100%); */
+background-image: linear-gradient(to right top, #d9af7f, #e8b193, #f0b6a8, #f3bcbe, #f1c5d0);
+  padding: 15px 25px;
+  border-radius: 16px;
+  color: #4d4949;
+  font-family: sans-serif;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  /* max-width: fit-content; */
+  margin: 20px auto;
+}
+
+.time-box {
+  text-align: center;
+}
+
+.time-value {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.time-label {
+  font-size: 14px;
+  color: #4d4949;
+  margin-top: 4px;
+}
+
+
+/* Location Section Styling */
+#locations {
+    background-color: rgba(255, 255, 255, 0.65);
+}
+
+.location-item {
+    background-color: #ffffff; /* Սպիտակ ֆոն */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.location-item h3 {
+    font-size: 1.6em;
+    color: #d9af7f;
+    margin-bottom: 15px;
+}
+
+.location-item h4 {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.location-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.horizontion {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+
+/* Timing Section Styling */
+#timing {
+    background-color: rgba(255, 255, 255, 0.65);
+}
+
+.timing-list p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.timing-list p span {
+    font-weight: bold;
+    color: #a07b4d; 
+    font-size: 1.3em;
+    margin-right: 10px;
+}
+
+/* RSVP Section Styling */
+#rsvp {
+    background-color: rgba(255, 255, 255, 0.65);
+}
+
+#rsvp p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    color: #d9af7f;
+}
+
+#rsvp form {
+    background-color: #ffffff; /* Սպիտակ ֆոն form-ի համար */
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#rsvp label {
+    /* margin-bottom: 10px; */
+    font-weight: bold;
+    color: #d9af7f;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1em;
+}
+
+#rsvp input[type="text"],
+#rsvp input[type="number"] {
+    width: calc(100% - 20px); /* Հաշվի առնել padding */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+}
+
+.radio-group {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.radio-group label {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 15px;
+    font-weight: normal;
+    cursor: pointer;
+    vertical-align: middle;
+    color: #555; /* Փոխել գույնը, որպեսզի համապատասխանի */
+    font-size: 1em; /* Կարգավորել տառաչափը */
+    font-family: Arial, sans-serif; /* Պահպանել պարզ տառատեսակ radio-ի տեքստի համար */
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+    transform: scale(1.2);
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.house{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: rgba(255, 255, 255, 0.7); /* Թեթև թափանցիկ ֆոն */
+    color: #d9af7f;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2em;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 0 0 8px 8px; /* Կլորացված ստորին անկյուններ */
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 5px 0;
+    color: #d9af7f;
+}
+
+/* Animations */
+.animate-text {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSlideUp 1s forwards;
+    animation-delay: 0.5s; /* Կարգավորել ըստ անհրաժեշտության */
+}
+
+.animate-zoom {
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeInZoom 1s forwards;
+    animation-delay: 1s; /* Կարգավորել ըստ անհրաժեշտության */
+}
+
+.animate-fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInSlideUp 1s forwards;
+    animation-delay: 0.2s; /* Կարգավորել ըստ անհրաժեշտության */
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+}
+
+.slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideUp 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInZoom {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 0; /* Հեռացնել padding-ը փոքր էկրանների վրա */
+        max-width: 100%;
+        box-shadow: none; /* Հեռացնել box-shadow-ը */
+    }
+    section {
+        padding: 30px 15px;
+        margin-bottom: 15px;
+        border-radius: 0; /* Հեռացնել border-radius-ը */
+        box-shadow: none; /* Հեռացնել box-shadow-ը */
+    }
+    h1 {
+        font-size: 2.8em;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+    h4 {
+        font-size: 1em;
+    }
+    .hero-content {
+        padding-bottom: 20px;
+    }
+    .house{
+        display: block;
+
+    }
+    .calendar {
+        padding: 20px;
+        margin: 20px auto;
+    }
+    .calendar .days {
+        font-size: 0.9em;
+        gap: 5px;
+    }
+    .calendar .days span {
+        padding: 8px 3px;
+        min-width: 35px;
+        min-height: 35px;
+    }
+    .countdown {
+        padding: 25px;
+        margin: 20px auto;
+    }
+    .countdown h3 {
+        font-size: 1.8em;
+    }
+    .timer-display {
+        gap: 20px;
+    }
+    .timer-display .time-group span:first-child {
+        font-size: 2.5em;
+        padding: 15px 20px;
+        min-width: 70px;
+    }
+    .timer-display .time-group span:last-child {
+        font-size: 1.1em;
+    }
+    .horizontion {
+        display: inline;
+    }
+    .location-image {
+        max-width: none;
+    }
+    .location-item {
+        padding: 20px;
+    }
+    .button {
+        padding: 10px 25px;
+        font-size: 0.9em;
+    }
+    #rsvp form {
+        padding: 25px;
+    }
+    #rsvp label {
+        font-size: 1em;
+    }
+    #rsvp input[type="text"],
+    #rsvp input[type="number"] {
+        width: calc(100% - 20px);
+        padding: 8px;
+    }
+    footer {
+        padding: 30px 15px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.2em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    h3 {
+        font-size: 1.3em;
+    }
+    .hero-image {
+        margin-top: 20px;
+        width: 70%;
+    }
+    .mini-images img {
+    width: 100px;
+    height: 100px;
+    }
+
+    .calendar .days {
+        font-size: 0.8em;
+        gap: 3px;
+    }
+    .calendar .days span {
+        padding: 6px 2px;
+        min-width: 30px;
+        min-height: 30px;
+        font-size: 16px;
+    }
+    .countdown {
+        padding: 20px;
+    }
+    .countdown h3 {
+        font-size: 1.5em;
+    }
+    .timer-display {
+        flex-direction: column; /* Փոքր էկրանների վրա դասավորել ուղղահայաց */
+        gap: 15px;
+    }
+    .timer-display .time-group {
+        width: 100%; /* Լայնությունը 100% */
+    }
+    .timer-display .time-group span:first-child {
+        font-size: 2.8em;
+        width: calc(100% - 40px); /* Հաշվի առնել padding */
+        min-width: unset;
+    }
+    .timer-display .time-group span:last-child {
+        font-size: 1em;
+    }
+    #rsvp form {
+        padding: 20px;
+    }
+    .radio-group label {
+        margin-right: 10px; /* Կրճատել բացը փոքր էկրանների վրա */
+        margin-bottom: 0;
+        display: inline-block; /* Պահպանել իրար կողք */
+    }
+    .radio-group input[type="radio"] {
+        margin-left: 0;
+    }
+    /* Ավելացնել, եթե radio տարբերակները շատ մոտիկ են իրար */
+    .radio-group > label:not(:last-child) {
+        margin-bottom: 10px; /* Օրինակ, եթե յուրաքանչյուր տարբերակ առանձին տողում է */
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    section {
+        padding: 20px 0;
+    }
+    .container {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 1.4em;
+    }
+    .timer-display {
+        font-size: 1.2em;
+        gap: 8px;
+    }
+}
