@@ -4,35 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Հարսանեկան Հրավիրատոմս - Արթուր և Հասմիկ</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="particles-js"></div>
     <div class="container">
         <section id="hero" class="fade-in">
             <div class="hero-content">
-                <h1 class="animate-text">Արթուր և Հասմիկ</h1>
+                <h1 class="animate-text pulse">Արթուր և Հասմիկ</h1>
                 <h4 class="animate-text">Միասին սկսում ենք մեր նոր ճամփորդությունը</h4>
-                <img src="images/photo_2025-07-30_23-40-53.jpg" alt="Հարս և Փեսա" class="hero-image animate-zoom">
-            
-                <div class="mini-images animate-zoom">
-                    <img src="images/Nshandreq.JPG" alt="լուսանկար 1">
-                    <img src="images/Surb_Hovhannes.jpg" alt="լուսանկար 2">
-                    <img src="images/Haso_photo.jpg" alt="լուսանկար 3">
+
+                <div class="story-section">
+                    <div class="photo-slideshow-container">
+                        <div class="photo-slide fade">
+                            <img src="images/photo_2025-07-30_23-40-53.jpg" alt="լուսանկար 1">
+                        </div>
+                        <div class="photo-slide fade">
+                            <img src="images/photo_2025-09-15_17-27-35.jpg" alt="լուսանկար 2">
+                        </div>
+                        <div class="photo-slide fade">
+                            <img src="images/Nshandreq.JPG" alt="լուսանկար 3">
+                        </div>
+                        <div class="photo-slide fade">
+                            <img src="images/photo_2025-09-15_17-27-37.jpg" alt="լուսանկար 4">
+                        </div>
+                        <div class="photo-slide fade">
+                            <img src="images/Surb_Hovhannes.jpg" alt="լուսանկար 5">
+                        </div>
+                        <div class="photo-slide fade">
+                            <img src="images/photo_2025-09-15_17-27-39.jpg" alt="լուսանկար 6">
+                        </div>
+                    </div>
+
+                    <div class="thumbnail-container">
+                        <img class="thumbnail-dot" src="images/photo_2025-07-30_23-40-53.jpg" onclick="currentSlide(1)" alt="Thumbnail 1">
+                        <img class="thumbnail-dot" src="images/photo_2025-09-15_17-27-35.jpg" onclick="currentSlide(2)" alt="Thumbnail 2">
+                        <img class="thumbnail-dot" src="images/Nshandreq.JPG" onclick="currentSlide(3)" alt="Thumbnail 3">
+                        <img class="thumbnail-dot" src="images/photo_2025-09-15_17-27-37.jpg" onclick="currentSlide(4)" alt="Thumbnail 4">
+                        <img class="thumbnail-dot" src="images/Surb_Hovhannes.jpg" onclick="currentSlide(5)" alt="Thumbnail 5">
+                        <img class="thumbnail-dot" src="images/photo_2025-09-15_17-27-39.jpg" onclick="currentSlide(6)" alt="Thumbnail 6">
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="about_me" class="slide-up">
-            <h2 class="animate-text">Մեր պատմությունը</h2>
-            <h4 class="animate-text">Մեր պատմությունը սկսվեց մի պարզ հայացքից, որը վերածվեց ջերմ զգացմունքի։ Միասին անցած յուրաքանչյուր օրն ամրապնդեց մեր սերը և համոզմունքը, որ մենք ստեղծված ենք միմյանց համար։ Այժմ մենք պատրաստ ենք սկսել մեր կյանքի ամենակարևոր՝ ընտանեկան ուղին, և երջանիկ կլինենք, եթե այդ օրը կիսեք մեզ հետ։🫰</h4>
+        <section id="about_me">
+            <h2 class="animate-on-scroll animate-text">Մեր պատմությունը</h2>
+            <h4 class="animate-on-scroll animate-text" data-delay="100">Մեր պատմությունը սկսվեց մի պարզ հայացքից, որը վերածվեց ջերմ զգացմունքի։ Միասին անցած յուրաքանչյուր օրն ամրապնդեց մեր սերը և համոզմունքը, որ մենք ստեղծված ենք միմյանց համար։ Այժմ մենք պատրաստ ենք սկսել մեր կյանքի ամենակարևոր՝ ընտանեկան ուղին, և երջանիկ կլինենք, եթե այդ օրը կիսեք մեզ հետ։🫰</h4>
         </section>
 
-        <section id="details" class="slide-up">
-            <h2 class="animate-text">ՄԱՆՐԱՄԱՍՆԵՐ</h2>
-            <h4 class="animate-text">Մեծ ուրախությամբ հրավիրում ենք Ձեզ ներկա գտնվելու մեր ամուսնության արարողությանը։</h4>
+        <section id="details">
+            <h2 class="animate-on-scroll animate-text">ՄԱՆՐԱՄԱՍՆԵՐ</h2>
+            <h4 class="animate-on-scroll animate-text" data-delay="100">Մեծ ուրախությամբ հրավիրում ենք Ձեզ ներկա գտնվելու մեր ամուսնության արարողությանը։</h4>
 
-            <div class="calendar animate-fade-in-up">
+            <div class="animate-on-scroll animate-fade-in-up calendar">
                 <h3>հոկտեմբերի 2025</h3>
                 <div class="days">
                     <span>Երկ</span><span>Երք</span><span>Չոր</span><span>Հին</span><span>Ուրբ</span><span>Շաբ</span><span>Կիր</span>
@@ -46,54 +72,45 @@
                 </div>
             </div>
 
-            <!-- <div class="countdown animate-fade-in-up">
-                <h3>ՄԻՆՉԵՎ ՀԱՐՍԱՆԻՔԸ ՄՆԱՑԵԼ Է</h3>
-                <div id="timer" class="timer-display">
-                    <span id="days">00</span> օր
-                    <span id="hours">00</span> ժամ
-                    <span id="minutes">00</span> րոպե
-                    <span id="seconds">00</span> վրկ
-                </div>
-            </div> -->
-            <div class="countdown animate-fade-in-up">
+            <div class="animate-on-scroll animate-fade-in-up countdown" data-delay="200">
                 <h3>ՄԻՆՉԵՎ ՀԱՐՍԱՆԻՔԸ ՄՆԱՑԵԼ Է</h3>
                 <div id="timer" class="timer-container">
                     <div class="time-box">
-                    <div id="days" class="time-value">00</div>
-                    <div class="time-label">Days</div>
+                        <div id="days" class="time-value">00</div>
+                        <div class="time-label">Days</div>
                     </div>
                     <div class="time-box">
-                    <div id="hours" class="time-value">00</div>
-                    <div class="time-label">Hours</div>
+                        <div id="hours" class="time-value">00</div>
+                        <div class="time-label">Hours</div>
                     </div>
                     <div class="time-box">
-                    <div id="minutes" class="time-value">00</div>
-                    <div class="time-label">Minutes</div>
+                        <div id="minutes" class="time-value">00</div>
+                        <div class="time-label">Minutes</div>
                     </div>
                     <div class="time-box">
-                    <div id="seconds" class="time-value">00</div>
-                    <div class="time-label">Seconds</div>
+                        <div id="seconds" class="time-value">00</div>
+                        <div class="time-label">Seconds</div>
                     </div>
                 </div>
             </div>
 
         </section>
 
-        <section id="locations" class="slide-up">
-            <h2 class="animate-text">ՎԱՅՐԵՐ</h2>
-            
+        <section id="locations">
+            <h2 class="animate-on-scroll animate-text">ՎԱՅՐԵՐ</h2>
+
             <div class="house">
-                <div class="location-item animate-fade-in-up">
+                <div class="animate-on-scroll animate-fade-in-up location-item">
                     <h3>Փեսայի տուն</h3>
                     <h4>Հասցե՝ ք․ Արթիկ, Թումանյան 53</h4>
                 </div>
-                <div class="location-item animate-fade-in-up">
+                <div class="animate-on-scroll animate-fade-in-up location-item" data-delay="100">
                     <h3>Հարսի տուն</h3>
                     <h4>Հասցե՝ ք․ Արթիկ, Անկախության 21Ա</h4>
                 </div>
             </div>
-            
-            <div class="location-item animate-fade-in-up">
+
+            <div class="animate-on-scroll animate-fade-in-up location-item">
                 <h3>ԵԿԵՂԵՑԻ</h3>
                 <h4>Սուրբ Գրիգոր և Սուրբ Աստվածածին (Հառիճավանք)</h4>
                 <div class="horizontion">
@@ -101,8 +118,8 @@
                     <a href="https://www.google.com/maps/place/%D5%B0%D5%A1%D5%BC%D5%AB%D5%B3%D5%A1%D5%BE%D5%A1%D5%B6%D6%84/data=!4m2!3m1!1s0x406a756d0c044a69:0x9b1dc7a53f3e2642?sa=X&ved=1t:155783&hl=ru&ictx=111" target="_blank" class="button">Քարտեզ</a>
                 </div>
             </div>
-            
-            <div class="location-item animate-fade-in-up">
+
+            <div class="animate-on-scroll animate-fade-in-up location-item" data-delay="100">
                 <h3>ՌԵՍՏՈՐԱՆ</h3>
                 <h4>"999 Wedding Hall" ռեստորանային համալիր</h4>
                 <h4>Հասցե՝ ք․ Արթիկ, Սասունցի Դավիթ 6</h4>
@@ -113,40 +130,19 @@
             </div>
         </section>
 
-        <section id="timing" class="slide-up">
-            <h2 class="animate-text">ԺԱՄԱՆԱԿԱՑՈՒՅՑ</h2>
+        <section id="timing">
+            <h2 class="animate-on-scroll animate-text">ԺԱՄԱՆԱКАՑՈՒՅՑ</h2>
             <div class="timing-list">
-                <p class="animate-text"><span>13:00</span> - Հարսի տուն</p>
-                <p class="animate-text"><span>15:00</span> - Պսակադրություն</p>
-                <p class="animate-text"><span>17:00</span> - Դիմավորում</p>
-                <p class="animate-text"><span>18:00</span> - Ճաշկերույթի հանդես</p>
-                <p class="animate-text"><span>23:00</span> - Ավարտ</p>
+                <p class="animate-on-scroll animate-text"><span>13:00</span> - Հարսի տուն</p>
+                <p class="animate-on-scroll animate-text" data-delay="100"><span>15:00</span> - Պսակադրություն</p>
+                <p class="animate-on-scroll animate-text" data-delay="200"><span>17:00</span> - Դիմավորում</p>
+                <p class="animate-on-scroll animate-text" data-delay="300"><span>18:00</span> - Ճաշկերույթի հանդես</p>
+                <p class="animate-on-scroll animate-text" data-delay="400"><span>23:00</span> - Ավարտ</p>
             </div>
         </section>
 
-        <!-- <section id="rsvp" class="slide-up">
-            <h2 class="animate-text">RSVP</h2>
-            <p class="animate-text">Խնդրում ենք հաստատել ձեր ներկայությունը մինչև հոկտեմբերի 2-ը:</p>
-            
-            <form action="https://formspree.io/f/mzzvvzwy" method="POST" class="animate-fade-in-up">
-                <label for="name">Ձեր Անուն-Ազգանունը:</label>
-                <input type="text" id="name" name="Անուն_Ազգանուն" required>
-
-                <label for="guest_count">Ձեզ հետ եկող մարդկանց քանակը (ներառյալ Ձեզ):</label>
-                <input type="number" id="guest_count" name="Մարդկանց_Քանակը" min="1" value="1" required>
-
-                <div class="radio-group">
-                    <label style="margin-bottom: 30px;">Կկարողանա՞ք ներկա գտնվել միջոցառմանը:</label><br>
-                    <input type="radio" id="attend_yes" name="Ներկայություն" value="Այո, կգամ" required>
-                    <label for="attend_yes">Այո, կգամ</label><br>
-                    <input type="radio" id="attend_no" name="Ներկայություն" value="Ոչ, չեմ կարողանա գալ">
-                    <label for="attend_no">Ոչ, չեմ կարողանա գալ</label>
-                </div>
-
-                <button type="submit" class="button">Ուղարկել</button>
-            </form>
-            <p class="success-message" style="display:none; color: white; margin-top: 20px;">Ձեր պատասխանն ուղարկված է, շնորհակալություն։</p>
-        </section> -->
+        <div id="hearts-container"></div>
+        <button id="hearts-btn" class="button">❤️</button>
 
         <footer>
             <p>ՍԻՐՈՎ ՍՊԱՍՈՒՄ ԵՆՔ ՁԵԶ❤️</p>
@@ -154,6 +150,7 @@
         </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 </body>
-</html>
+</html> 
