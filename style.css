@@ -1,3 +1,4 @@
+/* === ՀԻՄՆԱԿԱՆ ՈՃԵՐ === */
 body {
     font-family: 'Playfair Display', serif;
     margin: 0;
@@ -13,74 +14,152 @@ body {
     background-position: center center;
 }
 
-#particles-js { position: absolute; width: 100%; height: 100%; z-index: -1; }
-.container { max-width: 900px; margin: 0 auto; padding: 0; box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); background-color: rgba(255, 255, 255, 0.5); min-height: 100vh; }
-section { padding: 60px 20px; text-align: center; background-color: rgba(255, 255, 255, 0.4); margin-bottom: 20px; border-radius: 8px; border-left: 2px solid #d9af7f; border-right: 2px solid #d9af7f; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-#hero { padding: 80px 20px; background-color: rgba(255, 255, 255, 0.4); min-height: 600px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; }
-.hero-content { max-width: 700px; z-index: 1; }
-.hero-image { width: 100%; max-width: 500px; height: auto; border-radius: 10px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); margin-top: 30px; }
-.story-section { margin-top: 60px; }
-.photo-slideshow-container { position: relative; max-width: 500px; margin: 20px auto 0; overflow: hidden; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); aspect-ratio: 2 / 3; background-color: transparent; border: none; }
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px; /* Ավելացնում ենք կողային բացատներ բջջայինների համար */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    background-color: rgba(255, 255, 255, 0.5);
+    min-height: 100vh;
+}
+
+section {
+    padding: clamp(40px, 8vw, 60px) clamp(15px, 5vw, 40px); /* Հարմարվող բացատներ */
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 2px solid #d9af7f;
+    border-right: 2px solid #d9af7f;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* === ՏԱՌԱՉԱՓԵՐԻ ՀԱՐՄԱՐՎՈՂԱԿԱՆՈՒԹՅՈՒՆ === */
+h1 {
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
+    color: #d9af7f;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    color: #d9af7f;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+h3 {
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    color: #d9af7f;
+    margin-bottom: 15px;
+}
+
+h4 {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+p {
+    color: #555;
+    font-family: Arial, sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+/* === HERO ԵՎ ՍԼԱՅԴԵՐ === */
+#hero {
+    min-height: auto;
+    padding-bottom: 40px;
+}
+
+.story-section {
+    margin-top: clamp(30px, 6vw, 60px);
+}
+
+.photo-slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto 0;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    aspect-ratio: 2 / 3;
+    background-color: transparent;
+    border: none;
+}
+
 .photo-slide { display: none; position: absolute; width: 100%; height: 100%; }
 .photo-slide img { width: 100%; height: 100%; object-fit: cover; }
+.fade { animation: fade 1.5s; }
+.no-animation { animation: none; }
+@keyframes fade { from { opacity: .4 } to { opacity: 1 } }
 
-.fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-/* NEW: This class will disable the animation when we need an instant change */
-.no-animation {
-    animation: none;
-}
-
-@keyframes fade {
-    from { opacity: .4 }
-    to { opacity: 1 }
+.thumbnail-container {
+    text-align: center;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Թույլ է տալիս տեղափոխվել նոր տող */
+    gap: 10px;
 }
 
-.thumbnail-container { text-align: center; margin-top: 15px; }
-.thumbnail-dot { cursor: pointer; height: 80px; width: 80px; margin: 0 5px; border-radius: 50%; display: inline-block; transition: transform 0.3s ease, border-color 0.3s ease; border: 3px solid transparent; object-fit: cover; opacity: 0.7; }
-.thumbnail-dot.active, .thumbnail-dot:hover { border-color: #d9af7f; transform: scale(1.1); opacity: 1; }
+.thumbnail-dot {
+    cursor: pointer;
+    height: 60px; /* Փոքրացրել ենք չափսը */
+    width: 60px;
+    border-radius: 50%;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    border: 3px solid transparent;
+    object-fit: cover;
+    opacity: 0.7;
+}
 
-.animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.6s ease-out; }
+.thumbnail-dot.active, .thumbnail-dot:hover {
+    border-color: #d9af7f;
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* === ԱՅԼ ԲԱԺԻՆՆԵՐ === */
+#about_me { background-color: rgba(255, 255, 255, 0.65); }
+
+.calendar { margin: 40px auto; padding: clamp(15px, 4vw, 30px); }
+.calendar .days { gap: 5px; font-size: clamp(0.8rem, 2vw, 1rem); }
+.calendar .days span { min-width: 30px; min-height: 30px; padding: 5px; }
+
+.countdown { margin: 40px auto; padding: clamp(20px, 5vw, 40px); }
+.time-value { font-size: clamp(1.8rem, 6vw, 2.5rem); }
+.time-label { font-size: clamp(0.7rem, 2vw, 0.9rem); }
+
+.house { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.horizontion { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.location-item { flex: 1; min-width: 280px; }
+.location-image { width: 100%; max-width: 400px; }
+
+/* === ԱՆԻՄԱՑԻԱՆԵՐԻ ՀԱՄԱԿԱՐԳ === */
+.animate-on-scroll {
+    opacity: 0;
+    transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+}
 .animate-text, .animate-fade-in-up { transform: translateY(30px); }
 .animate-zoom { transform: scale(0.9); }
 .animate-on-scroll.active { opacity: 1; transform: none; }
 
-h1 { font-family: 'Playfair Display', serif; font-size: 3.5em; color: #d9af7f; margin-bottom: 10px; letter-spacing: 2px; }
-h2 { font-family: 'Playfair Display', serif; font-size: 2.5em; color: #d9af7f; margin-top: 40px; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1.5px; }
-h3 { font-family: 'Playfair Display', serif; font-size: 1.8em; color: #d9af7f; margin-bottom: 15px; }
-h4 { font-family: 'Playfair Display', serif; font-size: 1.2em; color: #555; margin-bottom: 20px; line-height: 1.5; }
-p { color: #555; font-family: Arial, sans-serif; font-size: 1em; }
-#about_me { background-color: rgba(255, 255, 255, 0.65); }
-.button { display: inline-block; padding: 12px 30px; background-color: #d9af7f; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s ease, transform 0.2s ease; margin-top: 20px; font-family: 'Playfair Display', serif; letter-spacing: 1px; border: none; }
-.button:hover { background-color: #96682f; transform: translateY(-2px); }
-.calendar { margin: 40px auto; padding: 30px; background-color: rgba(255, 255, 255, 0.4); border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); max-width: 100%; box-sizing: border-box; }
-.calendar h3 { font-size: 2em; color: #d9af7f; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1.5px; }
-.calendar .days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 15px; font-size: 1em; }
-.calendar .days span { padding: 12px 5px; border-radius: 8px; background-color: #F5E9DC; white-space: nowrap; position: relative; display: flex; justify-content: center; align-items: center; min-width: 40px; min-height: 40px; box-sizing: border-box; color: #555; font-size: 19px; font-weight: normal; transition: background-color 0.3s ease; }
-.calendar .days span:nth-child(-n+7) { font-weight: bold; background-color: #d9af7fba; color: #555; }
-.calendar .days .highlight-date { background-color: rgba(255, 255, 255, 0.01); color: #555; font-weight: bold; position: relative; z-index: 1; text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.8); }
-.calendar .days .highlight-date::before { content: ''; position: absolute; width: 155%; height: 190%; z-index: -1; background-image: url("images/heart_icon.png"); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center; animation: heartBeatImage 1s infinite alternate; }
-@keyframes heartBeatImage { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
-.countdown { text-align: center; margin: 40px auto; padding: 40px; background-color: rgba(255, 255, 255, 0.65); border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); max-width: 750px; box-sizing: border-box; }
-.countdown h3 { font-family: 'Playfair Display', serif; font-size: 2.2em; color: #d9af7f; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2.5px; }
-.timer-container { display: flex; justify-content: space-around; background-image: linear-gradient(to right top, #d9af7f, #e8b193, #f0b6a8, #f3bcbe, #f1c5d0); padding: 15px 25px; border-radius: 16px; color: #4d4949; font-family: sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.3); margin: 20px auto; }
-.time-box { text-align: center; }
-.time-value { font-size: 32px; font-weight: bold; }
-.time-label { font-size: 14px; color: #4d4949; margin-top: 4px; }
-#locations { background-color: rgba(255, 255, 255, 0.65); }
-.location-item { background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); margin-bottom: 30px; text-align: center; }
-.location-item h3 { font-size: 1.6em; color: #d9af7f; margin-bottom: 15px; }
-.location-item h4 { font-size: 1.1em; color: #555; margin-bottom: 20px; }
-.location-image { width: 100%; max-width: 400px; height: auto; border-radius: 8px; margin-top: 20px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); }
-.horizontion { display: flex; justify-content: space-evenly; align-items: center; }
-#timing { background-color: rgba(255, 255, 255, 0.65); }
-.timing-list p { font-family: 'Playfair Display', serif; font-size: 1.2em; color: #555; margin-bottom: 15px; display: flex; justify-content: center; align-items: baseline; }
-.timing-list p span { font-weight: bold; color: #a07b4d; font-size: 1.3em; margin-right: 10px; }
-.house{ display: flex; justify-content: space-around; }
-footer { text-align: center; padding: 40px 20px; background-color: rgba(255, 255, 255, 0.7); color: #d9af7f; font-family: 'Playfair Display', serif; font-size: 1.2em; border-top: 1px solid rgba(0, 0, 0, 0.05); border-radius: 0 0 8px 8px; margin-top: 20px; }
-footer p { margin: 5px 0; color: #d9af7f; }
+/* === ՍՐՏԻԿՆԵՐԻ ԿՈՃԱԿ ԵՎ FOOTER === */
 #hearts-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
 .heart { position: absolute; width: 20px; height: 20px; background-color: red; transform: rotate(-45deg); animation: fall 5s linear forwards; }
 .heart::before, .heart::after { content: ''; position: absolute; width: 20px; height: 20px; background-color: red; border-radius: 50%; }
@@ -89,20 +168,18 @@ footer p { margin: 5px 0; color: #d9af7f; }
 @keyframes fall { to { transform: translateY(100vh) rotate(-45deg); opacity: 0; } }
 #hearts-btn { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
 
-@media (max-width: 768px) {
-    .container { padding: 0; max-width: 100%; box-shadow: none; }
-    section { padding: 30px 15px; margin-bottom: 15px; border-radius: 0; box-shadow: none; }
-    h1 { font-size: 2.8em; }
-    h2 { font-size: 2em; }
-    .house { display: block; }
-    .photo-slideshow-container { max-width: 90%; }
-    .thumbnail-dot { width: 60px; height: 60px; }
-}
+footer { text-align: center; padding: 40px 20px; background-color: rgba(255, 255, 255, 0.7); color: #d9af7f; font-size: 1.2em; border-top: 1px solid rgba(0, 0, 0, 0.05); border-radius: 0 0 8px 8px; margin-top: 20px; }
+footer p { margin: 5px 0; color: #d9af7f; }
 
-@media (max-width: 480px) {
-    h1 { font-size: 2.2em; }
-    h2 { font-size: 1.8em; }
-    .hero-image { width: 80%; }
-    .photo-slideshow-container { max-width: 90%; }
-    .thumbnail-dot { width: 50px; height: 50px; }
+/* === MEDIA QUERIES - ՄԻԱՅՆ ԿԱՐԵՎՈՐ ՓՈՓՈԽՈՒԹՅՈՒՆՆԵՐԻ ՀԱՄԱՐ === */
+@media (max-width: 768px) {
+    .container { padding: 0; }
+    section {
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    .house { flex-direction: column; }
 }
