@@ -165,34 +165,6 @@ window.addEventListener('load', function() {
     setTimeout(adjustElementPositions, 100);
 });
 
-// Fix for text rendering issues
-// function fixTextRendering() {
-//     // Fix timing list text
-//     const timingItems = document.querySelectorAll('.timing-list p');
-//     const correctText = [
-//         "13:00 - Հարսի տուն",
-//         "14:30 - Եկեղեցի(Պսակադրություն)", 
-//         "15:30 - Փեսայի տուն",
-//         "17:00 - Ռեստորան",
-//     ];
-    
-//     timingItems.forEach((item, index) => {
-//         if (index < correctText.length) {
-//             // Only replace if text appears corrupted
-//             if (item.textContent.length > 20 || /[^\u0530-\u058F\u0020-\u007E]/.test(item.textContent)) {
-//                 item.textContent = correctText[index];
-//             }
-//         }
-//     });
-    
-//     // Force font reload if issues persist
-//     if (document.fonts && document.fonts.ready) {
-//         document.fonts.ready.then(() => {
-//             document.body.style.fontFamily = "'Playfair Display', 'Arial', serif";
-//         });
-//     }
-// }
-
 // Run on document load
 document.addEventListener('DOMContentLoaded', fixTextRendering);
 window.addEventListener('load', fixTextRendering);
@@ -216,3 +188,104 @@ function forceTextRedraw() {
 window.addEventListener('load', function() {
     setTimeout(forceTextRedraw, 500);
 });
+
+// Fix for mobile scroll jumping
+let scrollPosition = 0;
+let ticking = false;
+
+function preventScrollJump() {
+    // Get current scroll position
+    const newScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // If we detect a large jump (likely due to URL bar resize)
+    if (Math.abs(newScrollPosition - scrollPosition) > 100) {
+        // Restore previous scroll position
+        window.scrollTo(0, scrollPosition);
+    } else {
+        // Update our stored position
+        scrollPosition = newScrollPosition;
+    }
+    
+    ticking = false;
+}
+
+function requestTick() {
+    if (!ticking) {
+        requestAnimationFrame(preventScrollJump);
+        ticking = true;
+    }
+}
+
+// Listen to scroll events
+window.addEventListener('scroll', requestTick, { passive: true });
+
+// Additional fix for resize events (when URL bar hides/shows)
+window.addEventListener('resize', function() {
+    // Maintain scroll position after resize
+    window.scrollTo(0, scrollPosition);
+});
+
+// Initialize scroll position
+document.addEventListener('DOMContentLoaded', function() {
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+});
+
+// Fix for bottom bounce effect on iOS
+document.body.addEventListener('touchmove', function(e) {
+    // Prevent scrolling beyond boundaries
+    if (e.touches.length > 0) {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        
+        // If at bottom and trying to scroll down further, prevent it
+        if (scrollTop + clientHeight >= scrollHeight && e.touches[0].clientY < 0) {
+            e.preventDefault();
+        }
+        
+        // If at top and trying to scroll up further, prevent it
+        if (scrollTop <= 0 && e.touches[0].clientY > 0) {
+            e.preventDefault();
+        }
+    }
+}, { passive: false });
+
+// Comprehensive mobile scroll fix
+(function() {
+    'use strict';
+    
+    let scrollPosition = 0;
+    let windowHeight = window.innerHeight;
+    
+    // Store initial dimensions
+    function storeDimensions() {
+        windowHeight = window.innerHeight;
+        scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    }
+    
+    // Check if we need to stabilize scroll
+    function stabilizeScroll() {
+        const newWindowHeight = window.innerHeight;
+        const newScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // If window height changed significantly (URL bar resized)
+        if (Math.abs(newWindowHeight - windowHeight) > 40) {
+            // Restore scroll position
+            window.scrollTo(0, scrollPosition);
+            windowHeight = newWindowHeight;
+        } else {
+            // Update stored position
+            scrollPosition = newScrollPosition;
+        }
+    }
+    
+    // Set up event listeners
+    window.addEventListener('load', storeDimensions);
+    window.addEventListener('resize', stabilizeScroll);
+    window.addEventListener('scroll', function() {
+        requestAnimationFrame(stabilizeScroll);
+    });
+    
+    // Initial call
+    storeDimensions();
+})();

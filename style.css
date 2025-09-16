@@ -800,3 +800,78 @@ body {
 .p_text {
     flex-direction: row!important;
 }
+
+/* Fix for scroll jumping on mobile devices */
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent layout shifts when URL bar hides */
+.container {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+
+/* Fix for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    .container {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Alternative solution for scroll jumping */
+html, body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent bounce effect on iOS */
+body {
+    overscroll-behavior: none;
+}
+
+/* Minimal fix that often works */
+html {
+    scroll-behavior: auto !important;
+}
+
+body {
+    overscroll-behavior-y: contain;
+}
+
+/* Prevent elastic scrolling on iOS */
+body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
