@@ -1,8 +1,70 @@
-body {
-    font-family: 'Playfair Display', serif;
+/* Reset and Base Styles */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* Fix font rendering issues */
+body {
+    font-family: 'Playfair Display', 'Arial', 'serif' !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Ensure proper Unicode support */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap&subset=armenian');
+
+/* Specific fixes for timing section */
+#timing {
+    font-family: 'Playfair Display', 'Arial', sans-serif !important;
+}
+
+.timing-list p {
+    font-family: 'Playfair Display', 'Arial', sans-serif !important;
+    font-feature-settings: "liga" 1;
+}
+
+.timing-list p span {
+    font-family: 'Playfair Display', 'Arial', sans-serif !important;
+    unicode-bidi: plaintext;
+}
+
+/* Comprehensive font stack with proper fallbacks */
+body, h1, h2, h3, h4, h5, h6, p, span, div {
+    font-family: 
+        'Playfair Display', 
+        'Arial', 
+        'GHEA Grapalat',
+        'Sylfaen',
+        'DejaVu Sans',
+        'Tahoma',
+        'Verdana',
+        sans-serif;
+    unicode-range: U+000-5FF, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, 
+                   U+20D0-20FF, U+2100-214F, U+2150-218F, U+2190-21FF, U+2200-22FF,
+                   U+2300-23FF, U+2500-257F, U+2580-259F, U+25A0-25FF, U+2600-26FF,
+                   U+2700-27BF, U+3000-303F, U+3040-309F, U+30A0-30FF, U+3100-312F,
+                   U+3130-318F, U+3190-319F, U+3200-32FF, U+3300-33FF, U+4E00-9FFF,
+                   U+AC00-D7AF, U+F900-FAFF, U+FE00-FE0F, U+FE10-FE1F, U+FE20-FE2F,
+                   U+FE30-FE4F, U+FE50-FE6F, U+FE70-FEFF, U+FF00-FFEF, U+FFF0-FFFF;
+}
+
+/* Specific fix for Armenian text */
+@font-face {
+    font-family: 'ArmenianFallback';
+    src: local('Sylfaen'), local('DejaVu Sans');
+    unicode-range: U+0530-058F;
+}
+
+body {
+    font-family: 'Playfair Display', 'ArmenianFallback', 'Arial', sans-serif;
+}
+
+
+body {
+    font-family: 'Playfair Display', serif;
     background-color: #f0f0f0;
     color: #333;
     line-height: 1.6;
@@ -13,89 +75,130 @@ body {
     background-position: center center;
 }
 
+/* Particles Background */
 #particles-js { 
-    position: absolute; 
+    position: fixed; 
     width: 100%; 
     height: 100%; 
     z-index: -1; 
 }
 
+/* Main Container */
 .container { 
     max-width: 900px; 
     margin: 0 auto; 
     padding: 0; 
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); 
     background-color: rgba(255, 255, 255, 0.5); 
-    min-height: 100vh; 
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
 }
 
+/* Sections */
 section { 
-    padding: 60px 20px; 
+    padding: 40px 20px; 
     text-align: center; 
     background-color: rgba(255, 255, 255, 0.4); 
     margin-bottom: 20px; 
     border-radius: 8px; 
     border-left: 2px solid #d9af7f; 
     border-right: 2px solid #d9af7f; 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
 }
 
+/* Hero Section */
 #hero { 
-    padding: 80px 20px; 
+    padding: 40px 20px; 
     background-color: rgba(255, 255, 255, 0.4); 
-    min-height: 600px; 
+    min-height: auto;
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
     align-items: center; 
-    position: relative; 
-    overflow: hidden; 
+    position: relative;
 }
 
 .hero-content { 
-    max-width: 700px; 
+    max-width: 100%; 
+    width: 100%;
     z-index: 1; 
-    width: 100%; 
 }
 
-.hero-image { 
-    width: 100%; 
-    max-width: 500px; 
-    height: auto; 
-    border-radius: 10px; 
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); 
-    margin-top: 30px; 
+/* Typography */
+h1 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 2.5rem; 
+    color: #d9af7f; 
+    margin-bottom: 15px; 
+    letter-spacing: 1px;
+    line-height: 1.2;
+    word-wrap: break-word;
 }
 
+h2 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 2rem; 
+    color: #d9af7f; 
+    margin: 30px 0 20px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    line-height: 1.2;
+}
+
+h3 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 1.5rem; 
+    color: #d9af7f; 
+    margin-bottom: 15px; 
+    line-height: 1.3;
+}
+
+h4 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 1.1rem; 
+    color: #555; 
+    margin-bottom: 20px; 
+    line-height: 1.5; 
+}
+
+p { 
+    color: #555; 
+    font-family: Arial, sans-serif; 
+    font-size: 1rem; 
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+/* Story Section */
 .story-section { 
-    margin-top: 60px; 
+    margin-top: 40px; 
     width: 100%; 
 }
 
 .photo-slideshow-container { 
     position: relative; 
-    max-width: 500px; 
-    width: 90%;
+    max-width: 100%;
+    width: 100%;
     margin: 20px auto 0; 
     overflow: hidden; 
     border-radius: 10px; 
     box-shadow: 0 5px 20px rgba(0,0,0,0.2); 
-    aspect-ratio: 2 / 3; 
-    background-color: transparent; 
-    border: none; 
+    aspect-ratio: 3/4;
 }
 
 .photo-slide { 
     display: none; 
-    position: absolute; 
     width: 100%; 
     height: 100%; 
 }
+
 
 .photo-slide img { 
     width: 100%; 
     height: 100%; 
     object-fit: cover; 
+    border-radius: 10px;
 }
 
 .fade {
@@ -113,24 +216,22 @@ section {
 }
 
 .thumbnail-container { 
-    text-align: center; 
-    margin-top: 15px; 
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 8px;
+    margin-top: 15px;
 }
 
 .thumbnail-dot { 
     cursor: pointer; 
-    height: 80px; 
-    width: 80px; 
+    height: 60px; 
+    width: 60px; 
     border-radius: 50%; 
     transition: transform 0.3s ease, border-color 0.3s ease; 
-    border: 3px solid transparent; 
+    border: 2px solid transparent; 
     object-fit: cover; 
     opacity: 0.7; 
-    flex-shrink: 0;
 }
 
 .thumbnail-dot.active, .thumbnail-dot:hover { 
@@ -139,13 +240,14 @@ section {
     opacity: 1; 
 }
 
+/* Animations */
 .animate-on-scroll { 
     opacity: 0; 
     transition: opacity 0.8s ease-out, transform 0.6s ease-out; 
 }
 
 .animate-text, .animate-fade-in-up { 
-    transform: translateY(30px); 
+    transform: translateY(20px); 
 }
 
 .animate-zoom { 
@@ -157,70 +259,24 @@ section {
     transform: none; 
 }
 
-h1 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 3.5em; 
-    color: #d9af7f; 
-    margin-bottom: 10px; 
-    letter-spacing: 2px; 
-    line-height: 1.2;
-}
-
-h2 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 2.5em; 
-    color: #d9af7f; 
-    margin-top: 40px; 
-    margin-bottom: 30px; 
-    text-transform: uppercase; 
-    letter-spacing: 1.5px; 
-    line-height: 1.2;
-}
-
-h3 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 1.8em; 
-    color: #d9af7f; 
-    margin-bottom: 15px; 
-    line-height: 1.2;
-}
-
-h4 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 1.2em; 
-    color: #555; 
-    margin-bottom: 20px; 
-    line-height: 1.5; 
-}
-
-p { 
-    color: #555; 
-    font-family: Arial, sans-serif; 
-    font-size: 1em; 
-    line-height: 1.5;
-}
-
-#about_me { 
-    background-color: rgba(255, 255, 255, 0.65); 
-}
-
+/* Buttons */
 .button { 
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 30px; 
+    padding: 12px 25px; 
     background-color: #d9af7f; 
     color: white; 
     text-decoration: none; 
     border-radius: 5px; 
     font-weight: bold; 
     transition: background-color 0.3s ease, transform 0.2s ease; 
-    margin-top: 20px; 
+    margin-top: 15px; 
     font-family: 'Playfair Display', serif; 
     letter-spacing: 1px; 
     border: none; 
     min-height: 44px;
-    box-sizing: border-box;
+    font-size: 1rem;
 }
 
 .button:hover { 
@@ -228,73 +284,62 @@ p {
     transform: translateY(-2px); 
 }
 
+/* Calendar */
 .calendar { 
-    margin: 40px auto; 
-    padding: 30px; 
+    margin: 30px auto; 
+    padding: 20px; 
     background-color: rgba(255, 255, 255, 0.4); 
     border-radius: 10px; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
     max-width: 100%; 
-    box-sizing: border-box; 
+    overflow: hidden;
 }
 
 .calendar h3 { 
-    font-size: 2em; 
-    color: #d9af7f; 
-    margin-bottom: 25px; 
-    text-transform: uppercase; 
-    letter-spacing: 1.5px; 
+    font-size: 1.5rem; 
+    margin-bottom: 20px; 
 }
 
 .calendar .days { 
     display: grid; 
     grid-template-columns: repeat(7, 1fr); 
-    gap: 8px; 
+    gap: 5px; 
     margin-top: 15px; 
-    font-size: 1em; 
 }
 
 .calendar .days span { 
-    padding: 12px 5px; 
-    border-radius: 8px; 
+    padding: 8px 2px; 
+    border-radius: 5px; 
     background-color: #F5E9DC; 
-    white-space: nowrap; 
-    position: relative; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    min-width: 40px; 
-    min-height: 40px; 
-    box-sizing: border-box; 
+    min-height: 35px; 
     color: #555; 
-    font-size: 19px; 
+    font-size: 0.9rem; 
     font-weight: normal; 
-    transition: background-color 0.3s ease; 
 }
 
 .calendar .days span:nth-child(-n+7) { 
     font-weight: bold; 
     background-color: #d9af7fba; 
-    color: #555; 
 }
 
 .calendar .days .highlight-date { 
     background-color: rgba(255, 255, 255, 0.01); 
-    color: #555; 
     font-weight: bold; 
     position: relative; 
     z-index: 1; 
-    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.8); 
 }
 
 .calendar .days .highlight-date::before { 
     content: ''; 
     position: absolute; 
-    width: 155%; 
-    height: 190%; 
+    width: 140%; 
+    height: 160%; 
     z-index: -1; 
     background-image: url("images/heart_icon.png"); 
-    background-size: 100% 100%; 
+    background-size: contain; 
     background-repeat: no-repeat; 
     background-position: center center; 
     animation: heartBeatImage 1s infinite alternate; 
@@ -302,148 +347,144 @@ p {
 
 @keyframes heartBeatImage { 
     0% { transform: scale(1); } 
-    50% { transform: scale(1.15); } 
+    50% { transform: scale(1.1); } 
     100% { transform: scale(1); } 
 }
 
+/* Countdown */
 .countdown { 
     text-align: center; 
-    margin: 40px auto; 
-    padding: 40px; 
+    margin: 30px auto; 
+    padding: 25px 20px; 
     background-color: rgba(255, 255, 255, 0.65); 
     border-radius: 10px; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
-    max-width: 750px; 
-    box-sizing: border-box; 
+    max-width: 100%; 
 }
 
 .countdown h3 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 2.2em; 
-    color: #d9af7f; 
-    margin-bottom: 30px; 
-    text-transform: uppercase; 
-    letter-spacing: 2.5px; 
+    font-size: 1.5rem; 
+    margin-bottom: 20px; 
 }
 
 .timer-container { 
     display: flex; 
-    justify-content: space-around; 
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
     background-image: linear-gradient(to right top, #d9af7f, #e8b193, #f0b6a8, #f3bcbe, #f1c5d0); 
-    padding: 15px 25px; 
-    border-radius: 16px; 
+    padding: 15px; 
+    border-radius: 10px; 
     color: #4d4949; 
     font-family: sans-serif; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
-    margin: 20px auto; 
-    flex-wrap: wrap;
-    gap: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+    margin: 15px auto; 
 }
 
 .time-box { 
     text-align: center; 
-    min-width: 70px;
+    min-width: 60px;
 }
 
 .time-value { 
-    font-size: 32px; 
+    font-size: 1.8rem; 
     font-weight: bold; 
 }
 
 .time-label { 
-    font-size: 14px; 
+    font-size: 0.8rem; 
     color: #4d4949; 
     margin-top: 4px; 
 }
 
+/* Locations */
 #locations { 
     background-color: rgba(255, 255, 255, 0.65); 
 }
 
 .location-item { 
     background-color: #ffffff; 
-    padding: 30px; 
+    padding: 20px; 
     border-radius: 10px; 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); 
-    margin-bottom: 30px; 
+    margin-bottom: 20px; 
     text-align: center; 
 }
 
 .location-item h3 { 
-    font-size: 1.6em; 
-    color: #d9af7f; 
-    margin-bottom: 15px; 
+    font-size: 1.4rem; 
+    margin-bottom: 10px; 
 }
 
 .location-item h4 { 
-    font-size: 1.1em; 
-    color: #555; 
-    margin-bottom: 20px; 
+    font-size: 1rem; 
+    margin-bottom: 15px; 
 }
 
 .location-image { 
     width: 100%; 
-    max-width: 400px; 
+    max-width: 300px; 
     height: auto; 
     border-radius: 8px; 
-    margin-top: 20px; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
+    margin: 15px 0; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
 }
 
 .horizontion { 
     display: flex; 
-    justify-content: space-evenly; 
+    flex-direction: column;
+    justify-content: center; 
     align-items: center; 
-    flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
 }
 
+/* Timing */
 #timing { 
     background-color: rgba(255, 255, 255, 0.65); 
 }
 
 .timing-list p { 
     font-family: 'Playfair Display', serif; 
-    font-size: 1.2em; 
-    color: #555; 
+    font-size: 1.1rem; 
     margin-bottom: 15px; 
     display: flex; 
+    flex-direction: column;
     justify-content: center; 
-    align-items: baseline; 
-    flex-wrap: wrap;
+    align-items: center; 
+    text-align: center;
 }
 
 .timing-list p span { 
     font-weight: bold; 
     color: #a07b4d; 
-    font-size: 1.3em; 
-    margin-right: 10px; 
+    font-size: 1.2rem; 
+    margin-bottom: 5px;
 }
 
 .house { 
     display: flex; 
-    justify-content: space-around; 
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center; 
     gap: 20px;
 }
 
+/* Footer */
 footer { 
     text-align: center; 
-    padding: 40px 20px; 
+    padding: 30px 20px; 
     background-color: rgba(255, 255, 255, 0.7); 
     color: #d9af7f; 
     font-family: 'Playfair Display', serif; 
-    font-size: 1.2em; 
+    font-size: 1.1rem; 
     border-top: 1px solid rgba(0, 0, 0, 0.05); 
-    border-radius: 0 0 8px 8px; 
     margin-top: 20px; 
 }
 
 footer p { 
-    margin: 5px 0; 
-    color: #d9af7f; 
+    margin: 10px 0; 
 }
 
+/* Hearts Animation */
 #hearts-container { 
     position: fixed; 
     top: 0; 
@@ -501,231 +542,150 @@ footer p {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 
-/* Tablet and medium devices */
-@media (max-width: 1024px) {
-    .container {
-        max-width: 95%;
-        margin: 0 auto;
-    }
-    
+/* Responsive Design */
+@media (min-width: 768px) {
     h1 {
-        font-size: 3em;
-    }
-    
-    .photo-slideshow-container {
-        max-width: 80%;
-    }
-}
-
-/* Mobile landscape/small tablet */
-@media (max-width: 768px) {
-    .container {
-        padding: 0;
-        max-width: 100%;
-        box-shadow: none;
-    }
-    
-    section {
-        padding: 40px 15px;
-        margin-bottom: 15px;
-        border-radius: 0;
-        box-shadow: none;
-    }
-    
-    h1 {
-        font-size: 2.8em;
+        font-size: 3rem;
     }
     
     h2 {
-        font-size: 2em;
+        font-size: 2.2rem;
     }
     
     h3 {
-        font-size: 1.5em;
+        font-size: 1.7rem;
     }
     
-    h4 {
-        font-size: 1em;
-    }
-    
-    .house {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .horizontion {
-        flex-direction: column;
-        gap: 15px;
+    section {
+        padding: 50px 30px;
     }
     
     .photo-slideshow-container {
-        max-width: 90%;
+        max-width: 500px;
         aspect-ratio: 3/4;
     }
     
     .thumbnail-dot {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
     }
     
-    .button {
-        padding: 10px 25px;
-        font-size: 0.9em;
+    .horizontion {
+        flex-direction: row;
+        gap: 30px;
     }
     
-    .calendar {
-        padding: 20px;
-        margin: 20px auto;
-    }
-    
-    .calendar .days {
-        font-size: 0.9em;
-        gap: 5px;
-    }
-    
-    .calendar .days span {
-        padding: 8px 3px;
-        min-width: 35px;
-        min-height: 35px;
-    }
-    
-    .countdown {
-        padding: 25px;
-        margin: 20px auto;
-    }
-    
-    .countdown h3 {
-        font-size: 1.8em;
-    }
-    
-    .location-item {
-        padding: 20px;
+    .house {
+        flex-direction: row;
     }
     
     .timing-list p {
-        /* flex-direction: row; */
-        text-align: center;
+        flex-direction: row;
+        text-align: left;
     }
     
     .timing-list p span {
-        margin-right: 0;
-        margin-bottom: 5px;
+        margin-right: 10px;
+        margin-bottom: 0;
     }
     
-    footer {
-        padding: 30px 15px;
-        font-size: 1em;
+    .calendar .days {
+        gap: 8px;
     }
     
-    #hearts-btn {
-        bottom: 15px;
-        right: 15px;
-        width: 45px;
-        height: 45px;
+    .calendar .days span {
+        padding: 10px 5px;
+        font-size: 1rem;
+        min-height: 40px;
+    }
+    
+    .time-value {
+        font-size: 2.2rem;
+    }
+    
+    .time-label {
+        font-size: 0.9rem;
     }
 }
 
-/* Mobile portrait */
-@media (max-width: 480px) {
+@media (min-width: 1024px) {
     h1 {
-        font-size: 2.2em;
-    }
-    
-    h2 {
-        font-size: 1.8em;
-    }
-    
-    h3 {
-        font-size: 1.3em;
-    }
-    
-    .hero-image {
-        margin-top: 20px;
-        width: 90%;
+        font-size: 3.5rem;
     }
     
     .photo-slideshow-container {
-        aspect-ratio: 1/1;
+        max-width: 550px;
+    }
+    
+    .thumbnail-dot {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .time-value {
+        font-size: 2.5rem;
+    }
+}
+
+/* Fix for very small devices */
+@media (max-width: 340px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.7rem;
+    }
+    
+    section {
+        padding: 30px 15px;
     }
     
     .thumbnail-dot {
         width: 50px;
         height: 50px;
-        margin: 0 2px;
-    }
-
-    .calendar .days {
-        font-size: 0.8em;
-        gap: 3px;
     }
     
     .calendar .days span {
-        padding: 6px 2px;
-        min-width: 30px;
+        font-size: 0.8rem;
+        padding: 6px 1px;
         min-height: 30px;
-        font-size: 16px;
-    }
-    
-    .countdown {
-        padding: 20px 15px;
-    }
-    
-    .countdown h3 {
-        font-size: 1.5em;
     }
     
     .time-value {
-        font-size: 28px;
+        font-size: 1.5rem;
     }
     
-    .time-box {
-        min-width: 60px;
-    }
-    
-    .location-image {
-        max-width: 90%;
-    }
-    
-    #hearts-btn {
-        bottom: 10px;
-        right: 10px;
-        width: 40px;
-        height: 40px;
-        font-size: 1.2em;
+    .button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
     }
 }
 
-/* For very small devices */
-@media (max-width: 320px) {
-    h1 {
-        font-size: 1.8em;
+/* Landscape orientation for mobile */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    section {
+        padding: 20px 15px;
     }
     
-    .thumbnail-dot {
-        width: 40px;
-        height: 40px;
+    #hero {
+        padding: 20px;
+        min-height: auto;
     }
     
-    .calendar .days {
-        gap: 2px;
+    .story-section {
+        margin-top: 20px;
     }
     
-    .calendar .days span {
-        padding: 5px 1px;
-        font-size: 12px;
-        min-width: 25px;
-        min-height: 25px;
+    .photo-slideshow-container {
+        max-width: 40%;
     }
     
-    .time-value {
-        font-size: 24px;
-    }
-    
-    .time-box {
-        min-width: 50px;
+    .thumbnail-container {
+        margin-top: 10px;
     }
 }
 
@@ -738,34 +698,105 @@ footer p {
     }
 }
 
-/* Landscape orientation for mobile */
-@media screen and (orientation: landscape) and (max-height: 500px) {
-    section {
-        padding: 20px 0;
-    }
-    
-    .container {
-        padding: 10px;
+#hero {
+    padding-top: 30px !important;
+    min-height: unset !important;
+}
+
+.hero-content {
+    margin-top: -20px;
+}
+
+/* Adjust section spacing */
+section {
+    margin-top: 10px !important;
+}
+
+/* Specific adjustments for the main heading */
+h1 {
+    margin-top: 10px !important;
+    padding-top: 0 !important;
+}
+
+/* Fix for slideshow positioning */
+.story-section {
+    margin-top: 30px !important;
+}
+
+/* Ensure content doesn't get cut off at the top */
+.container {
+    padding-top: 10px;
+}
+
+/* Adjust particle background positioning */
+#particles-js {
+    top: 0;
+    height: 100vh;
+}
+
+/* Media queries for different screen sizes */
+@media (max-width: 768px) {
+    #hero {
+        padding-top: 20px !important;
     }
     
     h1 {
-        font-size: 1.8em;
+        font-size: 2.2rem !important;
+        margin-top: 5px !important;
     }
     
-    h2 {
-        font-size: 1.4em;
+    .story-section {
+        margin-top: 20px !important;
+    }
+    .img-res {
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero {
+        padding-top: 15px !important;
+        padding-bottom: 30px !important;
+    }
+    
+    h1 {
+        font-size: 1.9rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    h4 {
+        font-size: 1rem !important;
     }
     
     .photo-slideshow-container {
-        max-width: 50%;
+        margin-top: 15px !important;
     }
-    
-    .thumbnail-container {
-        margin-top: 10px;
+    .img-res {
+        object-fit: contain;
     }
-    
-    .thumbnail-dot {
-        width: 40px;
-        height: 40px;
+}
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+#hero {
+    transform: translateY(-5vh) !important;
+}
+
+@media (max-width: 768px) {
+    #hero {
+        transform: translateY(-3vh) !important;
     }
+}
+
+/* Ensure particles background doesn't push content down */
+#particles-js {
+    z-index: -1 !important;
+    position: fixed !important;
+}
+
+.p_text {
+    flex-direction: row!important;
 }

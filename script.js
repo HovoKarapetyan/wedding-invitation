@@ -108,3 +108,111 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(slideIndex);
     autoShowSlides();
 });
+
+// Handle window resize for responsiveness
+let resizeTimer;
+window.addEventListener('resize', () => {
+    document.body.classList.add('resize-animation-stopper');
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        document.body.classList.remove('resize-animation-stopper');
+    }, 400);
+});
+
+// Force redraw on elements that might have rendering issues
+function forceRedraw(element) {
+    element.style.display = 'none';
+    element.offsetHeight; // Trigger reflow
+    element.style.display = '';
+}
+
+// Call this function on elements that have rendering issues
+window.addEventListener('load', () => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        forceRedraw(section);
+    });
+});
+
+function adjustElementPositions() {
+    // Get the viewport height
+    const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+    
+    // Adjust hero section if it's taking too much space
+    const hero = document.getElementById('hero');
+    if (hero) {
+        const heroHeight = hero.offsetHeight;
+        if (heroHeight > vh * 0.7) {
+            hero.style.minHeight = 'auto';
+            hero.style.paddingTop = '20px';
+            hero.style.paddingBottom = '30px';
+        }
+    }
+    
+    // Ensure content is visible in the viewport
+    const firstContent = document.querySelector('h1, .hero-content');
+    if (firstContent) {
+        firstContent.scrollIntoView({ behavior: 'auto', block: 'start' });
+    }
+}
+
+// Run on document load and resize
+document.addEventListener('DOMContentLoaded', adjustElementPositions);
+window.addEventListener('resize', adjustElementPositions);
+
+// Additional check after images load
+window.addEventListener('load', function() {
+    setTimeout(adjustElementPositions, 100);
+});
+
+// Fix for text rendering issues
+// function fixTextRendering() {
+//     // Fix timing list text
+//     const timingItems = document.querySelectorAll('.timing-list p');
+//     const correctText = [
+//         "13:00 - Հարսի տուն",
+//         "14:30 - Եկեղեցի(Պսակադրություն)", 
+//         "15:30 - Փեսայի տուն",
+//         "17:00 - Ռեստորան",
+//     ];
+    
+//     timingItems.forEach((item, index) => {
+//         if (index < correctText.length) {
+//             // Only replace if text appears corrupted
+//             if (item.textContent.length > 20 || /[^\u0530-\u058F\u0020-\u007E]/.test(item.textContent)) {
+//                 item.textContent = correctText[index];
+//             }
+//         }
+//     });
+    
+//     // Force font reload if issues persist
+//     if (document.fonts && document.fonts.ready) {
+//         document.fonts.ready.then(() => {
+//             document.body.style.fontFamily = "'Playfair Display', 'Arial', serif";
+//         });
+//     }
+// }
+
+// Run on document load
+document.addEventListener('DOMContentLoaded', fixTextRendering);
+window.addEventListener('load', fixTextRendering);
+
+// Also run after a short delay to catch any dynamic rendering
+setTimeout(fixTextRendering, 1000);
+
+// Force redraw of elements with rendering issues
+function forceTextRedraw() {
+    const elements = document.querySelectorAll('p, h1, h2, h3, h4, span');
+    elements.forEach(el => {
+        // Temporarily change display to force redraw
+        const originalDisplay = el.style.display;
+        el.style.display = 'none';
+        void el.offsetHeight; // Trigger reflow
+        el.style.display = originalDisplay;
+    });
+}
+
+// Apply after page load
+window.addEventListener('load', function() {
+    setTimeout(forceTextRedraw, 500);
+});
